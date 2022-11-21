@@ -5,6 +5,8 @@ public class ArrowFightMain {
 		// TODO Auto-generated method stub
 		
 		int x = 0;
+		
+		int y = 11;
 
 	}
 
