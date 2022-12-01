@@ -8,15 +8,18 @@ import javax.swing.*;
 
 public class StartPagePanel extends JPanel {
 	
-	private static final long serialVersionUID = 1L;
+	private final long serialVersionUID = 1L;
+	private JPanel panelManager;
 
-	public StartPagePanel() {
+	public StartPagePanel(MainArrowFightPanel mainArrowFightPanel) {
+		
+		panelManager = mainArrowFightPanel; 
 		
 		JLabel arrowFightLabel = new JLabel("Arrow-Fight");
 		arrowFightLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		
 		JButton start = new JButton("Start Game");
-		start.addActionListener(new startButtonListener());
+//		start.addActionListener(new startButtonListener());
 		
 		
 		add(arrowFightLabel);
@@ -28,12 +31,9 @@ public class StartPagePanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			
+			((CardLayout) panelManager.getLayout()).next(panelManager);
+			panelManager.validate();
 		}
-		
-		
-		
 	}
 
 }

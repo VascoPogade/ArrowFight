@@ -1,15 +1,33 @@
 package ArrowFight;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.awt.Graphics;
+
+import javax.swing.*;
 
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
+	private Timer timer;
+	
+	PlayerObject player;
+	OpponentObject opponent;
 
 	public GamePanel() {
-		JButton button = new JButton("Klick mich!");
-		add(button);
+		JLabel testLabel = new JLabel("Hallo");
+		add(testLabel);
+		
+	}
+	
+	protected void startGame() {
+		player = new PlayerObject();
+		opponent = new OpponentObject();
+//		timer = new Timer();
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		
 	}
 	
 	

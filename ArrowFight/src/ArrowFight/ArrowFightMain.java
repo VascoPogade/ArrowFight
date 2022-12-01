@@ -1,17 +1,22 @@
 package ArrowFight;
 
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 public class ArrowFightMain {
 
 	public static void main(String[] args) {
 		
-		final JFrame gameFrame = new JFrame("ArrowFight");
-		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameFrame.setBounds(300, 75, 800, 700);
-		gameFrame.add(new StartPagePanel());
-//		gameFrame.pack();
-		gameFrame.setVisible(true);
-		gameFrame.setResizable(false);
+		ArrowFightFrame centralFrame = new ArrowFightFrame();
+		
 	}
+	
+//	ArrowFightFrame getCentralFrame() {
+//		return centralFrame;
+//	}
 }
