@@ -12,7 +12,7 @@ public class MainArrowFightPanel extends JPanel {
 		setLayout(card);
 		add("StartPage",new StartPagePanel(this));
 		add("GamePanel", new GamePanel());
-		setPreferredSize( new Dimension(800,600));
+		setPreferredSize(new Dimension(800,600));
 
 	}
 }

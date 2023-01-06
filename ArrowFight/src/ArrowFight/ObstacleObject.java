@@ -3,10 +3,11 @@ package ArrowFight;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
-public class PlayerObject extends SuperObject {
-	
-	public PlayerObject(int x, int y , double angle) {
-		super(x,y,angle, y, y, angle);
+public class ObstacleObject extends SuperObject{
+
+	protected ObstacleObject(double x, double y, double angle, int width, int height) {
+		super(x, y, angle, width, height, angle);
+		// TODO Auto-generated constructor stub
 	}
 	
 	protected void checkCollision(SuperObject other) {
@@ -14,12 +15,14 @@ public class PlayerObject extends SuperObject {
 		Rectangle2D.Double thisRec = this.turnIntoRectangle();
 		
 		if(thisRec.intersects(otherRec)) {
-			if(other instanceof OpponentObject) {
+			if(other instanceof PlayerObject) {
+				
+			}else if(other instanceof OpponentObject) {
 				
 			}else if(other instanceof ObstacleObject) {
 				
 			}else if(other instanceof ProjectileObject) {
-				health = health - 10;
+				
 			}
 			
 			if(getX() == (0+width/2)||getX()== (800-width/2)) {

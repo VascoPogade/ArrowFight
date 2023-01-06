@@ -19,7 +19,7 @@ public class StartPagePanel extends JPanel {
 		arrowFightLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		
 		JButton start = new JButton("Start Game");
-//		start.addActionListener(new startButtonListener());
+		start.addActionListener(new startButtonListener());
 		
 		
 		add(arrowFightLabel);
@@ -32,7 +32,7 @@ public class StartPagePanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) panelManager.getLayout()).next(panelManager);
-			panelManager.validate();
+			
 		}
 	}
 

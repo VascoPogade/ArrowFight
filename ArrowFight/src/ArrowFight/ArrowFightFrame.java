@@ -11,7 +11,7 @@ import javax.swing.JMenuBar;
 public class ArrowFightFrame {
 	
 	JFrame gameFrame;
-	CardLayout card;
+//	CardLayout card;
 	
 	public ArrowFightFrame(){
 		
@@ -67,12 +67,12 @@ public class ArrowFightFrame {
 		gameFrame.setResizable(false);
 	}
 	
-	 protected void changeToStartPagePanel() {
-		card.next(gameFrame);
-	}
-	 
-	 protected void changeToGamePanel() {
-		 card.next(gameFrame);
-	 }
+//	 protected void changeToStartPagePanel() {
+//		card.next(gameFrame);
+//	}
+//	 
+//	 protected void changeToGamePanel() {
+//		 card.next(gameFrame);
+//	 }
 	
 }
