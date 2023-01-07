@@ -13,7 +13,6 @@ import javax.swing.*;
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	//Hallo
 	
 	private Timer timer;
 	
@@ -22,6 +21,7 @@ public class GamePanel extends JPanel {
 	private ProjectileObject testMissile1;
 	private ProjectileObject testMissile2;
 	private ProjectileObject testMissile3;
+	private PlayerObject testPlayer1;
 	private JLabel testLabel;
 	private List<SuperObject> gameObjectList;
 	private boolean gameOver;
@@ -46,7 +46,10 @@ public class GamePanel extends JPanel {
 		testMissile2 = new ProjectileObject(100.0,300.0,270.0);
 		gameObjectList.add(testMissile2);
 		testMissile3 = new ProjectileObject(200.0,200.0,300.0);
+		testPlayer1 = new PlayerObject(300.0, 300.0);
+		gameObjectList.add(testPlayer1);
 		gameObjectList.add(testMissile3);
+
 		timer.start();
 	}
 	

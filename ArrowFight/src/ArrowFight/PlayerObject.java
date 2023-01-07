@@ -1,7 +1,6 @@
 package ArrowFight;
 
-import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
+import java.awt.*;
 import java.util.Timer;
 
 public class PlayerObject extends SuperObject {
@@ -90,18 +89,38 @@ public class PlayerObject extends SuperObject {
 		super.MoveMe();
 	}
 	
-	protected void shoot() {
+	protected ProjectileObject shoot() {
 		
-		double startPointX = 0.0;
-		
-		
+		double startPointX;
+		double startPointY;
+
+		double startAngle = bowAngle;
+
+		startPointX = width/2;
+		startPointY = height/2;
+
+		ProjectileObject arrow = new ProjectileObject(startPointY, startPointY, startAngle);
+
+		return arrow;
 	}
 	
 	
 
 	@Override
 	protected void renderMe(Graphics g) {
-		// TODO Auto-generated method stub
+
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.BLACK);
+
+		AffineTransform aff = new AffineTransform();
+		RoundRectangle2D body = new RoundRectangle2D.Double(position.x,position.y,width,height, 0, 0);
+		Arc2D.Double handle = new Arc2D.Double(body.getCenterX()-5.0, body.getCenterY()+5.0, 5.0, 5.0, 80.0, 0.0, ARC2D.OPEN)
+
+		//bodyAngle wird mit * -1 multipliziert damit die Grad gegen den Uhrzeigersinn gezaehlt werden
+		aff.rotate((-1) * bodyAngle,body.getCenterX(), body.getCenterY());
+		Shape rotatedBody = aff.createTransformedShape(body);
+
+		g2d.fill(rotatedBody);
 		
 	}
 
