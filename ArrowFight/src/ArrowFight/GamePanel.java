@@ -18,7 +18,9 @@ public class GamePanel extends JPanel {
 	
 	private PlayerObject player;
 	private OpponentObject opponent;
-	private ProjectileObject testMissile;
+	private ProjectileObject testMissile1;
+	private ProjectileObject testMissile2;
+	private ProjectileObject testMissile3;
 	private JLabel testLabel;
 	private List<SuperObject> gameObjectList;
 	private boolean gameOver;
@@ -38,8 +40,12 @@ public class GamePanel extends JPanel {
 		timer = new Timer(20,new CentralTimeListener());
 //		player = new PlayerObject(20,20,40);
 //		opponent = new OpponentObject();
-		testMissile = new ProjectileObject(200.0,200.0,145.0);
-		gameObjectList.add(testMissile);
+		testMissile1 = new ProjectileObject(600.0,400.0,90.0);
+		gameObjectList.add(testMissile1);
+		testMissile2 = new ProjectileObject(100.0,300.0,270.0);
+		gameObjectList.add(testMissile2);
+		testMissile3 = new ProjectileObject(200.0,200.0,300.0);
+		gameObjectList.add(testMissile3);
 		timer.start();
 	}
 	
@@ -57,7 +63,7 @@ public class GamePanel extends JPanel {
 		g.drawString("Crossbows destroyed: " + crossbowsDestroyed, 20, 60);
 		
 		for(SuperObject object:gameObjectList) {
-			object.drawMe(g);
+			object.renderMe(g);
 		}
 	}
 	
@@ -80,6 +86,10 @@ public class GamePanel extends JPanel {
 				}
 			}
 		}
+	}
+	
+	protected static void createMissile(int x) {
+		
 	}
 	
 	private class CentralTimeListener implements ActionListener{

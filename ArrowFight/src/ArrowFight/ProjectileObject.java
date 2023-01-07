@@ -11,7 +11,8 @@ import java.awt.geom.RoundRectangle2D;
 public class ProjectileObject extends SuperObject {
 
 	public ProjectileObject(double posX, double posY , double bodyAngle) {
-		super(posX,posY,bodyAngle, 3, 12, 4.0);
+		super(posX,posY,bodyAngle, 3, 12, 2.0);
+		setDistanceToMove(possibleSpeed);
 	}
 	
 	protected void checkCollision(SuperObject other) {
@@ -27,35 +28,33 @@ public class ProjectileObject extends SuperObject {
 				setAlive(false);
 			}else if(other instanceof ProjectileObject) {
 				setAlive(false);
+//				other.setAlive(false);
 			}
 			
-			if(getX() == (0+width/2)||getX()== (800-width/2)) {
+			if(position.x <= (200+(width/2)) || position.x >= (300-(width/2))) {
 				setAlive(false);
 			}
-			if(getY() == 0+height/2||getY()== 700-height/2) {
+			if(getY() <= 0+height/2||getY() >= 700-height/2) {
 				setAlive(false);
 			}
 		}
 	}
 
 	@Override
-	protected void drawMe(Graphics g) {
+	protected void renderMe(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D) g;   
         g2d.setColor(Color.BLACK);        
          
-        AffineTransform transform = new AffineTransform();        
-        RoundRectangle2D missileShape = new RoundRectangle2D.Double(position.x,position.y,width,height, 5, 1); 
+        AffineTransform aff = new AffineTransform();        
+        RoundRectangle2D arrow = new RoundRectangle2D.Double(position.x,position.y,width,height, 0, 0); 
          
-        transform.rotate(bodyAngle,missileShape.getCenterX(), missileShape.getCenterY());
-        Shape transformedMissileShape = transform.createTransformedShape(missileShape);
+        //bodyAngle wird mit * -1 multipliziert damit die Grad gegen den Uhrzeigersinn gezaehlt werden
+        aff.rotate((-1) * bodyAngle,arrow.getCenterX(), arrow.getCenterY());
+        Shape rotatedArrow = aff.createTransformedShape(arrow);
          
-        g2d.fill(transformedMissileShape);
+        g2d.fill(rotatedArrow);
 		
-//		Graphics2D g2d = (Graphics2D) g;
-//		
-//		RoundRectangle2D.Double missile = new RoundRectangle2D.Double(position.x,position.y,width,height, 2, 2);
-//		g2d.draw(missile);
 	}
 	
 }

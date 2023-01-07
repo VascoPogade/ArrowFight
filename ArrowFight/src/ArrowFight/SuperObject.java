@@ -19,27 +19,38 @@ public abstract class SuperObject {
 	
 	protected int health;
 	
-	protected double speed;
+	protected double distanceToMove;
 	
-	protected SuperObject(double posX, double posY, double bodyDegreeAngle, int width, int height, double speed) {
+	protected double possibleSpeed;
+	
+	protected SuperObject(double posX, double posY, double bodyDegreeAngle, int width, int height, double possibleSpeed) {
 		position = new Point2D.Double(posX,posY);
 		this.bodyAngle = (Math.toRadians(bodyDegreeAngle) + Math.PI);
 		alive = true;
 		health = 100;
 		this.width = width;
 		this.height = height;
-		this.speed = speed;
+		distanceToMove = 0.0;
+		this.possibleSpeed = possibleSpeed;
 	}
 	
 	protected Rectangle2D.Double turnIntoRectangle() {
 		return new Rectangle2D.Double(getX(),getY(),width,height);
 	}
 	
+	protected void setDistanceToMove(double distanceToMove) {
+		this.distanceToMove = distanceToMove;
+	}
+	
+	protected double getDistanceToMove() {
+		return distanceToMove;
+	}
+	
 	protected boolean getAlive() {
 		return alive;
 	}
 	
-	protected void setAlive(boolean alive) {
+	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
 	
@@ -83,29 +94,28 @@ public abstract class SuperObject {
 		return health;
 	}
 	
-	protected void checkCollision(SuperObject other) {
-		Rectangle2D.Double otherRec = other.turnIntoRectangle();
-		Rectangle2D.Double thisRec = this.turnIntoRectangle();
-		
-		if(thisRec.intersects(otherRec)) {
-			if(other instanceof PlayerObject) {
-				
-			}else if(other instanceof OpponentObject) {
-				
-			}else if(other instanceof ObstacleObject) {
-				
-			}else if(other instanceof ProjectileObject) {
-				
-			}
-			
-			if(getX() == (0+width/2)||getX()== (800-width/2)) {
-				
-			}
-			if(getY() == 0+height/2||getY()== 700-height/2) {
-				
-			}
-		}
-	}
+	protected abstract void checkCollision(SuperObject other);
+//		Rectangle2D.Double otherRec = other.turnIntoRectangle();
+//		Rectangle2D.Double thisRec = this.turnIntoRectangle();
+//		
+//		if(thisRec.intersects(otherRec)) {
+//			if(other instanceof PlayerObject) {
+//				
+//			}else if(other instanceof OpponentObject) {
+//				
+//			}else if(other instanceof ObstacleObject) {
+//				
+//			}else if(other instanceof ProjectileObject) {
+//				
+//			}
+//			
+//			if(getX() == (0+width/2)||getX()== (800-width/2)) {
+//				
+//			}
+//			if(getY() == 0+height/2||getY()== 700-height/2) {
+//				
+//			}
+//		}
 	
 	protected Point2D.Double AngleToDouble(double angle) {
 		
@@ -121,10 +131,10 @@ public abstract class SuperObject {
 		
 		Point2D.Double deltaXY = AngleToDouble(bodyAngle);
 		
-		position.x = position.x + (deltaXY.x * speed);
-		position.y = position.y + (deltaXY.y * speed);
+		position.x = position.x + (deltaXY.x * distanceToMove);
+		position.y = position.y + (deltaXY.y * distanceToMove);
 		
 	}
 	
-	protected abstract void drawMe(Graphics g);
+	protected abstract void renderMe(Graphics g);
 }

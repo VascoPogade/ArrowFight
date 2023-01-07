@@ -31,7 +31,7 @@ public class OpponentObject extends SuperObject {
 	}
 
 	@Override
-	protected void drawMe(Graphics g) {
+	protected void renderMe(Graphics g) {
 		// TODO Auto-generated method stub
 		
 	}

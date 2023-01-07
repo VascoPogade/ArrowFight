@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
 public class ObstacleObject extends SuperObject{
+	//Hallo Hallo
 
 	protected ObstacleObject(double x, double y, double angle, int width, int height) {
 		super(x, y, angle, width, height, angle);
@@ -35,7 +36,7 @@ public class ObstacleObject extends SuperObject{
 	}
 
 	@Override
-	protected void drawMe(Graphics g) {
+	protected void renderMe(Graphics g) {
 		// TODO Auto-generated method stub
 		
 	}
